@@ -4,8 +4,8 @@ import csv
 with open('Resources/election_data.csv', 'r') as file:
     reader = csv.reader(file)
     
-     # Skip the header row
-    next(reader) 
+    # Read and store the header row
+    header = next(reader) 
     
     #initialize variables
     total_votes = 0
@@ -47,6 +47,18 @@ for candidate, votes in candidate_votes.items():
 output += f'-------------------------\n\nWinner: {winner}\n\n-------------------------\n'
 
 print(output)
+
+
+# Specify the filename for the output text file
+output_file = 'election_results_output.txt'
+
+# Open the file in write mode and write the output to it
+with open(output_file, 'w') as file:
+    file.write(output)
+
+# Print a message indicating that the file has been successfully exported
+print(f"Election results have been exported to '{output_file}'.")
+
 
 
 
